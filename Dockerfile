@@ -14,7 +14,8 @@ RUN apt-get update && apt-get install -y \
         curl && \
     curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
     apt-get install -y nodejs && \
-    apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
+    mkdir -p /home/user && \
+    apt-get clean && rm -rf /root/.cache /home/user/.cache /var/cache/* /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
     useradd -m -u 1000 user && \
     pip install --no-cache-dir \
         datasets \
@@ -22,7 +23,5 @@ RUN apt-get update && apt-get install -y \
         "hf-transfer>=0.1.4" \
         "protobuf<4" \
         "click<8.1" \
-        "pydantic~=1.0" && \
-    apt-get clean && rm -rf /var/cache/* /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
+        "pydantic~=1.0" 
 USER user
