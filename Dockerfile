@@ -22,6 +22,7 @@ RUN apt-get update && apt-get install -y \
         "hf-transfer>=0.1.4" \
         "protobuf<4" \
         "click<8.1" \
-        "pydantic~=1.0"
+        "pydantic~=1.0" && \
+    apt-get clean && rm -rf /var/cache/* /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 USER user
